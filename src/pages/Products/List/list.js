@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 
 import Table from "antd/lib/table";
 import Button from "antd/lib/button";
+import Input from "antd/lib/input";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 function ProductsList({
@@ -51,6 +52,12 @@ function ProductsList({
     },
   ];
 
+  const onSearch = (search) => {
+    const term = search === '' ? null : search;
+    getProducts(term, sorterField, sorterDirection)
+      .then(() => setSearch(term))
+  }
+
   const onTableChange = (pagination, filters, sorter) => {
     getProducts(search, sorter.field, sorter.order)
       .then(() => {
@@ -60,15 +67,24 @@ function ProductsList({
   }
 
   return (
-    <Table
-      dataSource={products}
-      rowKey="id"
-      columns={columns}
-      pagination={false}
-      onChange={onTableChange}
-    />
+    <>
+      <Input.Search
+        placeholder="Search code or name"
+        allowClear
+        onSearch={onSearch}
+        style={{ width: 250 }}
+      />
+      <Table
+        dataSource={products}
+        rowKey="id"
+        columns={columns}
+        pagination={false}
+        onChange={onTableChange}
+      />
+    </>
+
   );
-};
+}
 
 ProductsList.propTypes = {
   products: PropTypes.arrayOf(
