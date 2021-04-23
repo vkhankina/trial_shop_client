@@ -10,7 +10,7 @@ function CartItemsList({
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'product.name',
+      dataIndex: ['product', 'name'],
     },
     {
       title: 'Quantity',
@@ -26,7 +26,7 @@ function CartItemsList({
     },
     {
       title: 'Price',
-      dataIndex: 'product.price',
+      dataIndex: ['product', 'price'],
     },
     {
       title: 'Total',
