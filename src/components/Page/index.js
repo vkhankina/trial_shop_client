@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import CartContext from "../../contexts/cart";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -12,6 +14,8 @@ const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
 
 function Page({ title, children }) {
+  const { cart } = useContext(CartContext);
+
   return (
     <Layout>
       <Header>
@@ -20,7 +24,7 @@ function Page({ title, children }) {
             <Link to="/">Home</Link>
           </Menu.Item>
           <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">Cart{cart ? ` (${cart.total})`: ''}</Link>
           </Menu.Item>
         </Menu>
       </Header>

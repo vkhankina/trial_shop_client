@@ -16,12 +16,12 @@ function ProductsPage() {
     if (search) {
       params['search'] = search
     }
-    if (sorterOrder) {
+    if (sorterOrder && sorterField) {
       const direction = sorterOrder === 'ascend' ? 'asc' : 'desc';
       params['orderBy'] = `${sorterField}:${direction}`
     }
 
-    return shopApi('/products/', 'get', { params })
+    return shopApi('/products', 'get', { params })
       .then((response) => setProducts(response.data))
       .catch(() => notify.error('Failed to fetch products!'))
   }
