@@ -33,7 +33,7 @@ function CartPage() {
     <Page title="Cart">
       <div>
         <Button onClick={flushCart}>Empty cart</Button>
-        <Button onClick={checkoutCart} disabled={cart?.total == 0.0}>Checkout</Button>
+        <Button onClick={checkoutCart} disabled={cart?.total === 0.0}>Checkout</Button>
       </div>
       <CartItemsList
         key={cart?.id}
