@@ -16,10 +16,10 @@ function CartProvider({ children }) {
   return (
     <CartContext.Provider value={{
       cart,
-      addProduct: noOp(),
-      setItemQty: noOp(),
-      checkout: noOp(),
-      flush: noOp(),
+      addProduct: console.log,
+      setItemQty: console.log,
+      checkout: console.log,
+      flush: console.log,
     }}>
       { children }
     </CartContext.Provider>
